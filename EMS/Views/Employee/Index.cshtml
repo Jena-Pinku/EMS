@@ -1,0 +1,78 @@
+﻿@model IEnumerable<EMS.Models.Employees>
+
+@{
+    ViewBag.Title = "List of Employee";
+}
+
+<h2>List of Employee</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create") |
+    @Html.ActionLink("Export To Excel", "ExportToExcel") |
+    @Html.ActionLink("Export To Pdf", "CreatePdf")
+</p>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+        font-family: Arial, sans-serif;
+    }
+
+    th, td {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .hide-column {
+        display: none;
+    }
+</style>
+
+<table>
+    <tr>
+        <th class="hide-column">@Html.DisplayNameFor(model => model.EmpId)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+        <th>@Html.DisplayNameFor(model => model.LastName)</th>
+        <th>@Html.DisplayNameFor(model => model.Gender)</th>
+        <th>@Html.DisplayNameFor(model => model.DOB)</th>
+        <th>@Html.DisplayNameFor(model => model.EmailId)</th>
+        <th>@Html.DisplayNameFor(model => model.ContactNo)</th>
+        <th>@Html.DisplayNameFor(model => model.Address)</th>
+        <th class="actions-column" style="width: 150px;">Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @using (Html.BeginForm("Delete", "Employees", new { id = item.EmpId }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <td class="hide-column">@Html.DisplayFor(modelItem => item.EmpId)</td>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                <td>@item.DOB.ToString("MM/dd/yyyy")</td>
+                <td>@Html.DisplayFor(modelItem => item.EmailId)</td>
+                <td>@Html.DisplayFor(modelItem => item.ContactNo)</td>
+                <td>@Html.DisplayFor(modelItem => item.Address)</td>
+
+                <td class="actions-column">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmpId }) |
+                    <input type="submit" value="Delete"
+                           onclick="return confirm('Are you sure you want to delete Employee ID: @item.EmpId?');" />
+                </td>
+            }
+        </tr>
+    }
+</table>

@@ -1,0 +1,37 @@
+﻿<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
+<div class="container vh-100 d-flex align-items-center justify-content-center">
+    <div class="text-center bg-white shadow-lg p-5 rounded-5" style="max-width: 700px; width: 100%;">
+        <div class="mb-4">
+            <i class="bi bi-people-fill text-primary" style="font-size: 3rem;"></i>
+        </div>
+        <h1 class="display-4 fw-bold text-gradient mb-3">Welcome to EMS</h1>
+        <p class="lead text-secondary">
+            Your smart solution to manage employee data effortlessly. Simplify HR operations, boost productivity.
+        </p>
+        <a href="@Url.Action("Index", "Employee")" class="btn btn-gradient mt-4 px-5 py-3 fw-semibold">
+            <i class="bi bi-box-arrow-in-right me-2"></i> View Employee Record
+        </a>
+    </div>
+</div>
+
+
+    body {
+        background: linear-gradient(135deg, #f0f4ff, #dbeafe);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .text-gradient {
+        background: linear-gradient(45deg, #007bff, #00c6ff);
+        
+        -webkit-text-fill-color: transparent;
+    }
+
+    .btn-gradient {
+        background: linear-gradient(to right, #007bff, #00c6ff);
+        border: none;
+        
+    }
+    
